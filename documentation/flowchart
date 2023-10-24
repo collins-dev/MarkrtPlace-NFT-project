@@ -1,0 +1,80 @@
+Start
+
+- Import required libraries
+
+Define State Variables:
+- listingPrice
+- itemIds Counter
+- itemsSold Counter
+- owner
+- idMarketItem (Mapping)
+
+Define MarketItem Struct:
+- tokenId
+- seller
+- owner
+- price
+- sold
+
+Define Events:
+- MarketItemCreated
+
+Define Modifiers:
+- onlyOwner
+
+Constructor:
+- Set contract name and symbol
+- Set the owner as the deployer
+
+Function: updateListingPrice
+- Check if the caller is the owner
+- Update the listing price
+
+Function: getListingPrice
+- Return the listing price
+
+Function: createToken
+- Increment the token ID
+- Mint a new NFT
+- Set its URI
+- Create a market item
+
+Function: createMarketItem
+- Check if the price is greater than 0
+- Check if the sent value matches the listing price
+- Create a market item for the NFT
+- Transfer the NFT from the seller to the contract
+- Emit MarketItemCreated event
+
+Function: reSellToken
+- Check if the caller is the owner of the NFT
+- Check if the sent value matches the listing price
+- Update market item details for resale
+- Decrement itemsSold counter
+- Transfer the NFT from the seller to the contract
+
+Function: createMarketSell
+- Get the price of the NFT
+- Check if the sent value matches the NFT price
+- Update market item details for sale
+- Increment itemsSold counter
+- Transfer the NFT from the contract to the buyer
+- Transfer listing price to the owner
+- Transfer the purchase amount to the seller
+
+Function: fetchMarketItem
+- Get the total number of tokens
+- Calculate the number of unsold tokens
+- Retrieve unsold market items
+
+Function: fetchMyNFT
+- Get the total number of tokens
+- Count the caller's owned unsold tokens
+- Retrieve the caller's unsold market items
+
+Function: fetchItemsListed
+- Get the total number of tokens
+- Count the caller's listed tokens
+- Retrieve the caller's listed market items
+
+End
